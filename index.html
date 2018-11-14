@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+     <head>
+         <title>Definitions</title>
+         
+         
+     </head>
+     
+     
+     
+     <body>
+         
+         <div id = "head"><h1>Web Dictionary</h1></div>
+         <br>
+         <div class = "body">
+             <p>Lookup the definition of a word (e.g. ajax, html, bar, php, javascript or css)</p>
+             <input type="text" id="query"/>
+             <input type="submit" value="Search" id="search"/>
+             
+             <input type="submit" value="Get All Definitions" id="searchall"/>
+             <br>
+             <div id="result"><h3>Result</h3></div>
+         </div>
+     </body>
+     
+     <style>
+        #head{
+            background-color:#761FB6;
+            font-family: Helvetica;
+            color:white;
+            padding:2em;
+        }
+        
+        .body{
+            padding-left: 1em;
+            font-family: sans-serif;
+            
+        }
+        
+        #result{
+            padding-top:1em;
+            font-family:Helvetica;
+        }
+     </style>
+     <script>
+         
+        window.onload = function() {
+            document.getElementById("search").addEventListener(
+                "click", function(){
+                var s_box =document.getElementById("search").value;            
+                new Ajax.Request("request.php?q="+s_box+"&all=true",
+                {
+                method: "get",
+                onSuccess: UsetheResult
+                });
+                          
+            });
+        };
+     </script>
+ </html> 
